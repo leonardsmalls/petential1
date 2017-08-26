@@ -17,8 +17,8 @@ var Login = React.createClass({
           <div className="pet-body home-buttons-wrapper">
             <div className="row">
               <div className="large-12 columns login-btm">
-               <a className="hollow button secondary" href="/blog.html">Login</a>
-                <a className="hollow button secondary" href="/blog.html">Register</a>
+               <a className="hollow button secondary" href="/blog">Login</a>
+                <a className="hollow button secondary" href="/blog">Register</a>
               </div>
             </div>
 
