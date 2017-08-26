@@ -30,6 +30,7 @@ app.use(express.static("./public"));
 require("./routes/html-routes.js")(app);
 require("./routes/post-api-routes.js")(app);
 require("./routes/author-api-routes.js")(app);
+require("./routes/spot-location-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({ force: true }).then(function() {
