@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Petential</title>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main-styles.css">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Compressed JavaScript -->
+    <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfPMjhYqgCkniB6YRd77nveRMFrZDZqg4&callback=initMap" type="text/javascript"></script>
+    <!-- Font awesome icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
+    <style>
+    .container {
+        max-width: 980px;
+        text-align: center;
+        margin: 70px auto;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    #geocoding_form {
+        margin: 40px auto 40px;
+    }
+
+    .input-group {
+        margin-left: 4%;
+    }
+
+    .find-me.btn:focus {
+        border-color: transparent;
+        outline: 0;
+    }
+
+    .coordinates {
+        font-size: 18px;
+        opacity: 0;
+        margin-bottom: 40px;
+    }
+
+    .no-browser-support {
+        font-size: 18px;
+        opacity: 0;
+    }
+
+    .coordinates b:first-child {
+        margin-right: 15px;
+    }
+
+    .visible {
+        opacity: 1;
+    }
+
+    .map-overlay {
+        max-width: 600px;
+        height: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        position: relative;
+        border-radius: 2px;
+    }
+
+    #map {
+        max-width: 550px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    @keyframes click-wave {
+        0% {
+            height: 40px;
+            width: 40px;
+            opacity: 0.35;
+            position: relative;
+        }
+        100% {
+            height: 200px;
+            width: 200px;
+            margin-left: -80px;
+            margin-top: -80px;
+            opacity: 0;
+        }
+    }
+
+    .option-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        position: relative;
+        top: 13.33333px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 40px;
+        width: 40px;
+        transition: all 0.15s ease-out 0s;
+        background: #cbd1d8;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 0.5rem;
+        outline: none;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .option-input:hover {
+        background: #9faab7;
+    }
+
+    .option-input:checked {
+        background: #40e0d0;
+    }
+
+    .option-input:checked::before {
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        content: '✔';
+        display: inline-block;
+        font-size: 26.66667px;
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .option-input:checked::after {
+        -webkit-animation: click-wave 0.65s;
+        -moz-animation: click-wave 0.65s;
+        animation: click-wave 0.65s;
+        background: #40e0d0;
+        content: '';
+        display: block;
+        position: relative;
+        z-index: 100;
+    }
+
+    .option-input.radio {
+        border-radius: 50%;
+        margin-bottom: -2px;
+    }
+
+    .option-input.radio::after {
+        border-radius: 50%;
+    }
+
+    label {
+        display: block;
+        line-height: 40px;
+        font-size: 24px;
+        margin-bottom: 60px;
+    }
+
+    button.find-me {
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        margin-top: 40px;
+        background-color: #92ACBE;
+        color: #fefefe;
+    }
+
+    input.lost-pet {
+        margin-top: 20px;
+    }
+
+    input.lost-pet:checked {
+        background-color: #ff0f0f;
+    }
+    /* entire container, keeps perspective */
+
+    .flip-container {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+    /*  UPDATED! flip the pane when hovered */
+
+    .flip-container.cliqued .back {
+        transform: rotateY(0deg);
+    }
+
+    .flip-container.cliqued .front {
+        transform: rotateY(180deg);
+    }
+
+    .flip-container {
+      margin:0 auto;
+    }
+
+    .flip-container,
+    .front,
+    .back {
+        width: 320px;
+        height: 480px;
+    }
+    /* flip speed goes here */
+
+    .flipper {
+        transition: 0.6s;
+        transform-style: preserve-3d;
+
+        position: relative;
+    }
+    /* hide back of pane during swap */
+
+    .front,
+    .back {
+        backface-visibility: hidden;
+        transition: 0.6s;
+        transform-style: preserve-3d;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    /*  UPDATED! front pane, placed above back */
+
+    .front {
+        z-index: 2;
+        transform: rotateY(0deg);
+    }
+    /* back, initially hidden pane */
+
+    .back {
+        transform: rotateY(-180deg);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-nav-bar title-bar">
+        <div class="title-bar-left">
+            <!-- <button class="menu-icon" type="button"></button> -->
+        </div>
+        <div class="title-bar-center">
+            <span class="title-bar-text">Petential</span>
+        </div>
+        <div class="title-bar-right">
+            <span class="title-bar-text"><a href="#"><i class="fa fa-home title-bar-logo"></i></a></span>
+        </div>
+    </div>
+    <div class="container">
+    <div class="container">
+        <ul class="pet-navigation">
+    <li>
+            <a class="btn btn-default" href="/authors"><i class="fa fa-paw" aria-hidden="true"></i></a>
+        </li>
+        <!-- <li>
+            <a class="btn btn-default" href="/cms">New Profile</a>
+        </li> -->
+        <li>
+            <a class="btn btn-default expand-information" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a>
+        </li>
+        <li>
+            <a class="btn btn-default" href="/territory"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+        </li>
+        <li>
+            <a class="btn btn-default" href="/upload"><i class="fa fa-camera-retro" aria-hidden="true"></i></a>
+        </li>
+    </ul>
+        <div class="flip-container hover" id="flip-toggle">
+            <div class="flipper">
+                <div class="front">
+                    <form id="geocoding_form" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-xs-12 col-md-6 col-md-offset-3">
+                                <div class="twhere">
+                                    <label class="title-bar-text">
+                                        <input type="radio" class="option-input radio pet-friendly" id="pet-friendly" name="mark-spot" /> Pet Friendly Place
+                                    </label>
+                                    <hr style="width: 80%">
+                                    <label class="title-bar-text">
+                                        <input type="radio" class="option-input radio lost-pet" id="lost-pet" name="mark-spot" /> Found a Lost Pet
+                                    </label>
+                                </div>
+                                <button type="button" class="find-me btn btn-info btn-block">Mark My Territory</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="back" style="background:#f8f8f8;">
+                    <p class="no-browser-support">Sorry, the Geolocation API isn't supported in Your browser.</p>
+                    <p class="location-text title-bar-text"></p>
+
+                    <div class="map-overlay">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Custom Script -->
+            <script src="js/putSpots.js" type="text/javascript"></script>
+</body>
+
+</html>

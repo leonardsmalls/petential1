@@ -1,0 +1,462 @@
+
+html, body {
+background: #E2EAEC;
+overflow-x: hidden;
+}
+
+.pet-title-list {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 2rem;
+}
+
+.pet-title-list-share {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 2rem;
+}
+
+.share-container {
+ margin-top: 70px;
+}
+
+textarea:focus {
+background-color: transparent;
+}
+
+h1, h2 {
+color: #333;
+font-size: 1em;
+text-align: center;
+}
+
+.fa-paw {
+    color: #92ACBE;
+}
+
+
+.pet-primary {
+  background: url(../images/main-pets.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.form-wrapper {
+margin-bottom: 50px;
+background-color: #fff;
+}
+
+input[type="text"].form-control::-webkit-input-placeholder {
+  color: orange;
+}
+
+
+#cms textarea:focus {
+  border:none;
+  box-shadow: none;
+}
+
+.create-button {
+background: #3a9dde;
+background: -webkit-linear-gradient(right,#3a9dde,#4dde67);
+background: -o-linear-gradient(right,#3a9dde,#4dde67);
+background: -moz-linear-gradient(right,#3a9dde,#4dde67);
+background: linear-gradient(to left, #3a9dde, #4dde67);
+border: 1px solid #AFC9DB !important;
+color: #fff !important;
+background-color: #fff !important;
+box-shadow: 2px 4px 9px rgba(0,0,0,.3);
+width: 74%;
+}
+
+.petSize {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.petSizeRange {
+  border-bottom: none !important;
+  width: 55% !important;
+}
+
+.create-prof {
+color:#C1343A;
+}
+
+.create-prof:hover {
+color:#D74A50;
+}
+
+.login-btm {
+text-align: center;
+}
+
+.login-btm .button.hollow.secondary {
+background-color: #fff;
+color:#4dde67;
+border:none;
+
+}
+
+.login-btm a {
+  margin-right: 8px;
+}
+#author-form .button {
+background-color: #92ACBE;
+color: #fefefe;
+
+}
+
+.view-profile-text, .edit-profile-text {
+ color: #92ACBE;
+}
+
+.delete-profile-text {
+color: #EF611F;
+}
+
+
+
+.button {
+  border-radius: 20px;
+}
+
+.pet-title-sub {
+color: #005c9d;
+text-align: center;
+font-size: 1.8em;
+}
+.pet-photo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+}
+.pet-photo {
+  position: relative;
+}
+.photo-icon {
+  position: absolute;
+  right: 28px;
+  bottom: 19px;
+  font-size: 100px;
+  opacity: 0.7;
+}
+
+.fa-camera {
+color: #696969;
+}
+
+h1.pet-title {
+text-shadow: 1px 1px 1px #5E5E5E;
+font-family: 'Paytone One', sans-serif;
+font-size: 6em;
+text-align: center;
+margin-bottom: -12px;
+color: #fff;
+font-weight: bold;
+margin-top: 25px;
+/*text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);*/
+
+}
+
+span.pet-txt {
+  font-weight: normal;
+  color: #fff;
+}
+
+.home-buttons-wrapper {
+position: absolute;
+top: 18px;
+right: 0;
+
+}
+
+
+ul.pet-navigation {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #fff;
+position: fixed;
+bottom: 0;
+width: 100%;
+text-align: center;
+box-shadow: 0px 7px 11px rgba(0,0,0,.5) !important;
+z-index: 99999;
+}
+
+.pet-navigation li {
+    display: inline-block;
+    width: 25%;
+    float: left;
+    border-left: 1px solid #EBEBEB;
+}
+
+.pet-navigation li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition:0.5s;
+}
+
+.alert-danger {
+color:#333;
+}
+
+.container {
+ padding-bottom: 33px;
+}
+
+.pet-navigation li a .fa {
+font-size: 1.5rem;
+color: #92ACBE;
+}
+
+#author-form table {
+ width: 100%;
+margin-bottom: 1rem;
+border-radius: 0;
+background-color: #fff;
+}
+
+table tbody tr:nth-child(2n) {
+    background-color: #f5f5f5;
+}
+
+.important-info {
+  display: none;
+}
+
+#cms {
+text-align: center;
+margin-top: 50px;
+padding-bottom: 50px;
+}
+
+textarea[rows] {
+    height: 0;
+}
+
+
+#cms input, textarea {
+border-bottom: 1px solid #b3b3b3 !important;
+border-left: none;
+border-right: none;
+border-top: none;
+box-shadow: none;
+font-size: 1rem;
+height: 2.3rem;
+background-color: transparent;
+}
+
+#cms select#author.form-control {
+font-family: 'Paytone One', sans-serif;
+border-bottom: none;
+border-left: none;
+border-right: none;
+border-top: none;
+box-shadow: none;
+font-size: 2rem;
+padding: 1rem;
+height: 5rem;
+text-align: center;
+background-color: transparent;
+
+}
+
+.pet-important-info {
+display: none;
+}
+
+.expanded-info {
+  font-size: 13px;
+}
+
+.blog-container {
+padding-left:0;
+padding-right: 0;
+margin-top:50px;
+}
+
+#cms .petSize input {
+  border-bottom: 0 !important;
+  vertical-align: middle;
+}
+
+.fa-paw {
+  vertical-align: middle;
+}
+
+.profile-backgrounds {
+
+}
+
+.title-bar-right {
+    right: 14px;
+    top: 9px;
+    position: absolute;
+}
+
+.title-bar {
+  text-align: center;
+}
+
+.title-bar-text {
+font-family: 'Paytone One', sans-serif;
+font-size: 1.5em;
+}
+
+.mobile-nav-bar {
+  margin-bottom: 50px;
+    height: 50px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,.5) !important;
+background: #3a9dde; /* Old Browsers */
+background: -webkit-linear-gradient(right,#3a9dde,#4dde67); /*Safari 5.1-6*/
+background: -o-linear-gradient(right,#3a9dde,#4dde67); /*Opera 11.1-12*/
+background: -moz-linear-gradient(right,#3a9dde,#4dde67); /*Fx 3.6-15*/
+background: linear-gradient(to left, #3a9dde, #4dde67); /*Standard*/
+position: fixed;
+z-index: 999999999;
+width: 100%;
+}
+
+.author-container {
+  margin-top: 100px;
+}
+
+h2.pet-profile-main {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 2em;
+}
+
+.mobile-nav-bar a {
+  color: #fefefe;
+}
+
+.pet-profile-text {
+font-family: 'Paytone One', sans-serif;
+font-size: 1em;
+color: #597385;
+margin-bottom:-5px;
+
+
+}
+
+small {
+text-transform: uppercase;
+color: #A3A3A3;
+font-size: 70%;
+
+}
+
+input#file {
+text-align: center !important;
+}
+
+.no-padding {
+padding: 1px 1px;
+}
+input:disabled {
+  background-color: transparent;
+}
+
+.pet-profile-subtext {
+  font-size: 1em;
+  color: #597385;
+  margin-top: 10px;
+  padding: 0 17px;
+}
+
+.delete-btm {
+position: absolute;
+right: 6px;
+top: 7px;
+font-size: 1.5em;
+color: #597385;
+display: none;
+}
+
+.petPhoto {
+ background-color:#F5F8FD;
+}
+
+.div.petPhoto {
+width: 100%;
+height: 168px;
+}
+
+.div.petPhoto img {
+width:100%;
+}
+
+.profile-pets {
+background-color: #fff;
+}
+
+.add-important-info {
+font-size: 14px;
+}
+
+.edit-btm {
+position: absolute;
+right: 28px;
+top: 189px;
+font-size: 1em;
+color: #fff;
+background-color: #4DDC6A;
+border-radius: 20px;
+padding: 10px;
+box-shadow: 0px 1px 3px rgba(0,0,0,.4) !important;
+
+}
+
+.pet-main-profile {
+position: relative;
+margin-bottom: 200px;
+vertical-align: middle;
+padding-bottom: 25px;
+/*border: 1px solid #C0C0C0;*/
+/*box-shadow: 0 25px 40px -20px #85a2ce;*/
+height: auto;
+display: flex;
+flex-direction: column;
+text-align: center;
+background-color: #fff;
+/*background-image: -webkit-linear-gradient(30deg,#f7f8fa 53%,#eeeff1 50%);*/
+
+}
+
+/*media queries*/
+@media screen and (max-width: 39.9375em) {
+h1.pet-title {
+  margin-top: 85px;
+  font-size: 3.5em;
+  font-family: 'Paytone One', sans-serif !important;
+}
+
+.pet-title-sub {
+    color: #005c9d;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.pet-title-list {
+    font-size: 1em;
+}
+
+
+}
